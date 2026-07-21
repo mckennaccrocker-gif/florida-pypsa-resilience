@@ -1,0 +1,13 @@
+geopandas
+matplotlib
+networkx
+numpy
+openpyxl
+pandas
+pypsa
+pyyaml
+rasterio
+scipy
+shapely
+snail
+xarray

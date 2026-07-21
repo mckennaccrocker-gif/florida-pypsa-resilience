@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Local config
+config/paths.yml
+.env
+
+# Large model/data artifacts
+*.nc
+*.gpkg
+*.tif
+*.tiff
+*.parquet
+*.h5
+*.hdf5
+*.zip
+*.7z
+*.rar
+
+# Generated heavy output folders
+data/
+raw/
+intermediate/
+scratch/
+outputs/**/*.png
+outputs/**/*.pdf
+!outputs/summary_tables/*.csv
+!outputs/summary_tables/*.md
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/

@@ -1,0 +1,17 @@
+# Example local path configuration.
+# Copy this file to paths.yml and update the paths for your machine.
+
+project_root: C:/oxford_tc_project
+
+data:
+  electricity: C:/oxford_tc_project/data/Electricity
+  exposure: C:/oxford_tc_project/data/Exposure
+  cost: C:/oxford_tc_project/data/Cost
+
+network:
+  pypsa_network_dir: C:/oxford_tc_project/data/Electricity/pypsa_florida_network
+  reviewed_grid_dir: C:/oxford_tc_project/data/Electricity/pypsa_florida_network_island_reviewed
+  extended_tie_line_grid_dir: C:/oxford_tc_project/data/Electricity/pypsa_florida_network_extended_tie_lines
+
+outputs:
+  flood_adaptation_analysis: C:/oxford_tc_project/data/Electricity/flood_adaptation_analysis
