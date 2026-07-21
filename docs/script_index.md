@@ -89,6 +89,12 @@ outputs/summary_tables/
 
 Large generated outputs are ignored by git and should be regenerated locally.
 
+For details on which datasets and generated outputs are excluded from GitHub, see:
+
+```text
+docs/data_availability.md
+```
+
 ## F. Diagnostics and Exploratory Scripts
 
 The repository also includes diagnostic, calibration, sensitivity, and plotting scripts that document how the final model was developed. See:
