@@ -38,10 +38,12 @@ docs/
   pypsa_network_workflow.md
   hazard_workflow.md
   flood_adaptation_workflow.md
+  validation_and_diagnostics.md
 config/
   paths.example.yml
 outputs/
   summary_tables/ small final CSV/Markdown summary outputs
+  figures/ selected thesis-ready figure PNGs
 ```
 
 ## Quick Start
@@ -76,6 +78,10 @@ Main saved result:
 - Central NPV: $763.1M
 
 See `outputs/summary_tables/` for final summary CSVs.
+
+## Why Some Files Are Not Included
+
+Large generated networks, QGIS layers, rasters, raw hazard files, and scenario run folders are intentionally excluded. They are too large for a clean GitHub repository and can be recreated from the documented workflow.
 
 ## Status
 

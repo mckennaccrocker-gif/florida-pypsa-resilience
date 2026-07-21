@@ -31,6 +31,8 @@ outputs/**/*.png
 outputs/**/*.pdf
 !outputs/summary_tables/*.csv
 !outputs/summary_tables/*.md
+!outputs/summary_tables/*.png
+!outputs/figures/*.png
 
 # OS/editor
 .DS_Store

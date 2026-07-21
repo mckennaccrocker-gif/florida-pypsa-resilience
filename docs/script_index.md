@@ -88,3 +88,11 @@ outputs/summary_tables/
 ```
 
 Large generated outputs are ignored by git and should be regenerated locally.
+
+## F. Diagnostics and Exploratory Scripts
+
+The repository also includes diagnostic, calibration, sensitivity, and plotting scripts that document how the final model was developed. See:
+
+```text
+docs/validation_and_diagnostics.md
+```
