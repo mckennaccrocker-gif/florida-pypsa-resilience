@@ -72,7 +72,7 @@ The workflow assumes access to locally prepared versions of:
 More detail on the role of each dataset is in:
 
 ```text
-docs/data_inputs.md
+docs/02_data_inputs.md
 ```
 
 ## Reproducibility Level
@@ -81,7 +81,7 @@ This repository supports transparent workflow review and partial reproduction fr
 
 The intended reproduction path is:
 
-1. prepare or download the source datasets described in `docs/data_inputs.md`;
+1. prepare or download the source datasets described in `docs/02_data_inputs.md`;
 2. update local paths using `config/paths.example.yml`;
-3. run the scripts in the order described in `docs/script_index.md`;
+3. follow the workflow described in `docs/03_full_workflow_story.md`;
 4. regenerate the large network, exposure, and scenario outputs locally.

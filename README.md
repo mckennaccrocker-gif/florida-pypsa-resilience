@@ -38,13 +38,13 @@ src/
   adaptation/    Flood adaptation, cost-benefit, and final table scripts
   validation/     EAGLE-I Hurricane Ian validation/comparison scripts
 docs/
-  full_workflow_story.md
-  data_inputs.md
-  data_availability.md
-  pypsa_network_workflow.md
-  hazard_workflow.md
-  flood_adaptation_workflow.md
-  validation_and_diagnostics.md
+  01_data_availability.md
+  02_data_inputs.md
+  03_full_workflow_story.md
+  04_pypsa_network_workflow.md
+  05_hazard_workflow.md
+  06_flood_adaptation_workflow.md
+  07_validation_and_diagnostics.md
 config/
   paths.example.yml
 outputs/
@@ -57,19 +57,13 @@ outputs/
 Start with the main narrative:
 
 ```text
-docs/full_workflow_story.md
-```
-
-Then use the run-order file:
-
-```text
-docs/script_index.md
+docs/03_full_workflow_story.md
 ```
 
 At a high level:
 
 1. Create a local data folder matching `config/paths.example.yml`.
-2. Download or place the required source datasets described in `docs/data_inputs.md`.
+2. Download or place the required source datasets described in `docs/02_data_inputs.md`.
 3. Build cleaned grid assets using the scripts in `src/electricity/`.
 4. Convert the cleaned assets into a PyPSA network.
 5. Run the no-hazard baseline.

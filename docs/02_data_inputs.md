@@ -147,4 +147,4 @@ src/exposure/
 src/cost/
 ```
 
-The tropical cyclone workflow supports both historical IBTrACS events and synthetic/return-period storm wind data. The flood workflow uses JRC return-period flood depths. See `docs/full_workflow_story.md` for the full connection between source data, asset intersections, PyPSA scenarios, exceedance curves, EAGLE-I validation, and flood cost-benefit analysis.
+The tropical cyclone workflow supports both historical IBTrACS events and synthetic/return-period storm wind data. The flood workflow uses JRC return-period flood depths. See `docs/03_full_workflow_story.md` for the full connection between source data, asset intersections, PyPSA scenarios, exceedance curves, EAGLE-I validation, and flood cost-benefit analysis.
