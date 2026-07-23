@@ -76,11 +76,15 @@ At a high level:
 6. Run wind, flood, N-1, or Hurricane Ian scenarios.
 7. Run validation/adaptation/cost-benefit scripts depending on the question.
 
-The scripts preserve the original project path structure used during development. For a new machine, update path constants or adapt them to read from `config/paths.example.yml`.
+Most scripts assume the local project folder structure used during this analysis. To rerun the workflow on another machine, update the paths in `config/paths.example.yml` or edit the path constants in the relevant scripts.
 
 ## Important Modeling Notes
 
 The PyPSA model represents transmission-scale operational behavior. It is not a full distribution-grid outage model, so local distribution outages observed in datasets such as EAGLE-I will not be fully represented. Load shedding in this model reflects transmission/generation/import constraints under modeled assumptions.
+
+The baseline model originally showed load shedding even before adding a hazard, which should not really be happening in a no-hazard case. To keep the hazard results from being driven by that baseline capacity issue, the line capacities were adjusted with a multiplier during calibration, including a 2x line-capacity case used to remove unrealistic baseline load shedding.
+
+The fragility/vulnerability curves are also important assumptions. The current selected curves, especially some of the flood curves, often produce relatively small damage ratios, so the modeled hazard impacts can look muted. These curves are saved and applied transparently in the scripts, and they can be swapped or stress-tested if a more conservative damage assumption is needed.
 
 Economic results use illustrative Value of Lost Load assumptions. These are societal avoided outage values, not direct utility revenue or verified Florida-specific cash savings.
 
