@@ -57,7 +57,6 @@ Relevant scripts:
 
 ```text
 src/adaptation/run_rp100_top5_cost_benefit.py
-src/adaptation/create_final_summary_tables.py
 ```
 
 ## Final Full-Suite Result

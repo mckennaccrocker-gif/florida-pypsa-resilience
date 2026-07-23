@@ -8,7 +8,7 @@ This is research code, so it is not a one-click package. But the goal of this re
 
 ## What This Repository Contains
 
-This repository is a cleaned, documented version of the Florida resilience workflow. It includes code and small summary outputs, but it intentionally does not include large raw datasets, PyPSA NetCDF networks, raster hazard files, or proprietary/local downloads.
+This repository is a cleaned, documented version of the Florida resilience workflow. It includes code and documentation, but it intentionally does not include large raw datasets, PyPSA NetCDF networks, raster hazard files, proprietary/local downloads, or generated analysis results.
 
 The workflow covers:
 
@@ -47,8 +47,6 @@ docs/
   07_validation_and_diagnostics.md
 config/
   paths.example.yml
-outputs/
-  summary_tables/ small final CSV/Markdown summary outputs
 ```
 
 ## Quick Start

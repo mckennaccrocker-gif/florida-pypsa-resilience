@@ -1,6 +1,6 @@
 # Data Availability and Reproducibility Notes
 
-This repository is designed to make the Florida PyPSA resilience workflow understandable and reusable without committing very large geospatial or model-output files. The code, documentation, and small summary tables are included. Large raw datasets and generated network/scenario artifacts are intentionally excluded.
+This repository is designed to make the Florida PyPSA resilience workflow understandable and reusable without committing very large geospatial files or generated analysis results. The code and documentation are included. Large raw datasets and generated network/scenario artifacts are intentionally excluded.
 
 ## Included in This Repository
 
@@ -11,7 +11,6 @@ The repository includes:
 - tropical cyclone wind, flood exposure, and adaptation analysis scripts
 - EAGLE-I Hurricane Ian validation/comparison scripts
 - diagnostic and plotting scripts used during model development
-- final flood-adaptation summary CSV and Markdown outputs
 - documentation describing the workflow and modeling assumptions
 
 These files are small enough to keep GitHub readable and are intended to document how the analysis was performed.
@@ -26,7 +25,7 @@ The following files are not committed because they are large, generated, machine
 - PyPSA NetCDF network files
 - full dispatch/scenario run folders
 - complete EAGLE-I outage extracts
-- intermediate SNAIL/OpenGIRA intersection outputs
+- intermediate SNAIL/OpenGIRA intersection files
 
 These exclusions are controlled through `.gitignore`.
 
@@ -76,11 +75,11 @@ docs/02_data_inputs.md
 
 ## Reproducibility Level
 
-This repository supports transparent workflow review and partial reproduction from local data. It is not a self-contained archive of all raw data and generated outputs.
+This repository supports transparent workflow review and partial reproduction from local data. It is not a self-contained archive of all raw data or generated results.
 
 The intended reproduction path is:
 
 1. prepare or download the source datasets described in `docs/02_data_inputs.md`;
 2. update local paths using `config/paths.example.yml`;
 3. follow the workflow described in `docs/03_full_workflow_story.md`;
-4. regenerate the large network, exposure, and scenario outputs locally.
+4. regenerate the large network, exposure, and scenario results locally.

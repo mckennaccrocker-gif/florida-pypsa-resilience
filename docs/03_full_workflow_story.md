@@ -158,7 +158,7 @@ src/electricity/run_boundary_import_baseline.py
 
 ## 4. Fragility and Vulnerability Curves
 
-The final hazard workflow uses curve points saved locally in `data/Cost/` and documents them in scenario outputs. The repo includes code that applies the curves, but not every source spreadsheet/PDF.
+The final hazard workflow uses curve points saved locally in `data/Cost/` and documents them in local scenario result folders. The repo includes code that applies the curves, but not every source spreadsheet/PDF.
 
 The main curves used were:
 
@@ -327,25 +327,7 @@ src/adaptation/run_flood_asset_criticality.py
 src/adaptation/run_rp100_top5_pilot.py
 src/adaptation/run_rp100_top5_full_suite.py
 src/adaptation/run_rp100_top5_cost_benefit.py
-src/adaptation/create_final_summary_tables.py
 ```
-
-Important saved outputs:
-
-```text
-outputs/summary_tables/Flood_Adaptation_Key_Findings.md
-outputs/summary_tables/full_suite_cost_benefit_results.csv
-outputs/summary_tables/full_suite_annualized_risk.csv
-```
-
-Headline result from the saved summary:
-
-- Baseline EENS: 190,229.9 MWh/year
-- Adapted EENS: 186,129.4 MWh/year
-- Avoided EENS: 4,100.5 MWh/year
-- Risk reduction: 2.16%
-- Central BCR: 19.76
-- Central NPV: $763.1M
 
 ## 11. What Is Not in GitHub
 
@@ -354,8 +336,8 @@ GitHub intentionally does not contain:
 - raw HIFLD/OSM/GPPD/EIA/EAGLE-I extracts;
 - large PyPSA `.nc` networks;
 - JRC flood rasters;
-- OpenGIRA/SNAIL intermediate raster outputs;
+- OpenGIRA/SNAIL intermediate raster files;
 - QGIS review layers;
 - full scenario run folders.
 
-The repo is meant to show the code, the final selected small outputs, and the logic of the workflow. The raw data should be downloaded from the original providers listed above and rebuilt locally.
+The repo is meant to show the code and the logic of the workflow. The raw data should be downloaded from the original providers listed above and rebuilt locally.
