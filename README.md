@@ -90,12 +90,6 @@ Economic results use illustrative Value of Lost Load assumptions. These are soci
 
 Raw restricted or very large data files are not included here. For security and reproducibility, the repo gives source links and workflow notes instead of committing local data extracts.
 
-## Why Some Files Are Not Included
-
-Large generated networks, QGIS layers, rasters, raw hazard files, and scenario run folders are intentionally excluded. They are too large for a clean GitHub repository and can be recreated from the documented workflow.
-
-For a dataset-by-dataset explanation, see `docs/data_availability.md`.
-
 ## Status
 
 This repository is research code for thesis analysis. It is designed for transparency and reproducibility of the workflow, not as a general-purpose package.
