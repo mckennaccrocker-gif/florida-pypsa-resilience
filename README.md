@@ -2,14 +2,7 @@
 
 This repository documents the Florida PyPSA resilience workflow I used to build a transmission-scale electricity model and then test hurricane wind, flood, N-1, validation, and adaptation questions on top of it.
 
-The basic idea is:
-
-1. build a Florida grid from transmission lines, buses/substations, power plants, load, costs, and generator profiles;
-2. make the grid more realistic by extending selected tie-lines into Georgia and Alabama;
-3. run baseline PyPSA dispatch with emergency import slack and load-shedding generators;
-4. damage or derate the grid using tropical cyclone or flood hazard data;
-5. compare the modeled consequences to observed Hurricane Ian outage data where possible;
-6. use the flood runs to test hardening options and cost-benefit results.
+The project builds a Florida grid from transmission lines, buses/substations, power plants, load, costs, and generator profiles. It also extends selected tie-lines into Georgia and Alabama so the model is not artificially cut off at the state border. From there, it can run baseline PyPSA dispatch with emergency import slack and load-shedding generators, apply tropical cyclone or flood damage to the grid, compare Hurricane Ian results with observed EAGLE-I outage patterns, and use the flood scenarios to test hardening options and cost-benefit results.
 
 This is research code, so it is not a one-click package. But the goal of this repo is to make the whole workflow understandable and to show where each major piece lives.
 
