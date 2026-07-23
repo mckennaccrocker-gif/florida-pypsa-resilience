@@ -90,21 +90,6 @@ Economic results use illustrative Value of Lost Load assumptions. These are soci
 
 Raw restricted or very large data files are not included here. For security and reproducibility, the repo gives source links and workflow notes instead of committing local data extracts.
 
-## Final Flood Adaptation Result
-
-The final five-asset RP100 flood adaptation package was evaluated across RP10, RP20, RP50, RP75, RP100, RP200, and RP500.
-
-Main saved result:
-
-- Baseline EENS: 190,229.9 MWh/year
-- Adapted EENS: 186,129.4 MWh/year
-- Avoided EENS: 4,100.5 MWh/year
-- Risk reduction: 2.16%
-- Central BCR: 19.76
-- Central NPV: $763.1M
-
-See `outputs/summary_tables/` for final summary CSVs.
-
 ## Why Some Files Are Not Included
 
 Large generated networks, QGIS layers, rasters, raw hazard files, and scenario run folders are intentionally excluded. They are too large for a clean GitHub repository and can be recreated from the documented workflow.
