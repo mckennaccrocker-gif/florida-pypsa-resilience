@@ -85,7 +85,3 @@ The intended reproduction path is:
 2. update local paths using `config/paths.example.yml`;
 3. run the scripts in the order described in `docs/script_index.md`;
 4. regenerate the large network, exposure, and scenario outputs locally.
-
-## Why the Large Files Are Excluded
-
-Many of the omitted files are hundreds of megabytes or more, and several are intermediate artifacts that can be regenerated from the documented workflow. Keeping them out of GitHub makes the repository easier to clone, inspect, and share with advisors or reviewers.
