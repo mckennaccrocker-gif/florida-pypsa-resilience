@@ -1,6 +1,6 @@
 # Data Availability and Reproducibility Notes
 
-This repository is designed to make the Florida PyPSA resilience workflow understandable and reusable without committing very large geospatial or model-output files. The code, documentation, small summary tables, and selected thesis-ready figures are included. Large raw datasets and generated network/scenario artifacts are intentionally excluded.
+This repository is designed to make the Florida PyPSA resilience workflow understandable and reusable without committing very large geospatial or model-output files. The code, documentation, and small summary tables are included. Large raw datasets and generated network/scenario artifacts are intentionally excluded.
 
 ## Included in This Repository
 
@@ -12,7 +12,6 @@ The repository includes:
 - EAGLE-I Hurricane Ian validation/comparison scripts
 - diagnostic and plotting scripts used during model development
 - final flood-adaptation summary CSV and Markdown outputs
-- selected PNG figures from the final flood-adaptation analysis
 - documentation describing the workflow and modeling assumptions
 
 These files are small enough to keep GitHub readable and are intended to document how the analysis was performed.

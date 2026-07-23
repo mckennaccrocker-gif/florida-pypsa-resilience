@@ -336,7 +336,6 @@ Important saved outputs:
 outputs/summary_tables/Flood_Adaptation_Key_Findings.md
 outputs/summary_tables/full_suite_cost_benefit_results.csv
 outputs/summary_tables/full_suite_annualized_risk.csv
-outputs/figures/
 ```
 
 Headline result from the saved summary:

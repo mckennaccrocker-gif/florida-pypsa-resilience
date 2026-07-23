@@ -49,7 +49,6 @@ config/
   paths.example.yml
 outputs/
   summary_tables/ small final CSV/Markdown summary outputs
-  figures/ selected thesis-ready figure PNGs
 ```
 
 ## Quick Start
