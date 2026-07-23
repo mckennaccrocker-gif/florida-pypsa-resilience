@@ -47,6 +47,12 @@ src/adaptation/run_rp100_top5_full_suite.py
 
 The economic analysis uses avoided expected annual load shedding and illustrative Value of Lost Load assumptions. The values are planning-level societal outage benefits, not utility revenue.
 
+The BCR matrix, NPV matrix, break-even plot, and BCR tornado/sensitivity graph are made in:
+
+```text
+src/adaptation/run_rp100_top5_cost_benefit.py
+```
+
 Relevant scripts:
 
 ```text

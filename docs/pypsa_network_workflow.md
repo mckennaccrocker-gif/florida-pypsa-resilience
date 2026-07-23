@@ -4,7 +4,7 @@ This document summarizes how the Florida electricity assets were converted into 
 
 ## 1. Transmission Topology
 
-Transmission line geometries were converted into network edges. Each line endpoint became a candidate node. Nearby endpoints were snapped together so that lines meeting at the same physical location became connected in the graph.
+HIFLD-style transmission line geometries were converted into network edges. Each line endpoint became a candidate node/bus. Nearby endpoints were snapped together so that lines meeting at the same physical location became connected in the graph.
 
 The snapping step matters because PyPSA needs every line to connect two buses. If endpoints that should meet are slightly misaligned, the model creates disconnected islands.
 
@@ -15,6 +15,8 @@ src/electricity/build_florida_transmission_network.py
 src/electricity/apply_island_review_decisions.py
 src/electricity/build_extended_georgia_alabama_tie_line_network.py
 ```
+
+The Georgia/Alabama extension is handled after the Florida topology is built. It keeps selected external bulk ties rather than cutting every line at the Florida state border.
 
 ## 2. Buses, Voltage Layers, and Transfer Components
 
@@ -46,12 +48,14 @@ src/electricity/add_slr_s_nom_to_florida_lines.py
 
 ## 4. Power Plants and Generator Assignment
 
-Power plants were matched between OSM and GPPD-style plant data. The final plant/generator records were assigned to the nearest suitable bus, with manual review for important large generators.
+Power plants were matched between OSM and GPPD-style plant data. OSM polygons were used where they gave useful physical footprints, and GPPD-style records provided plant capacity/fuel attributes. The final plant/generator records were assigned to the nearest suitable bus, with manual review for important large generators.
 
 Relevant scripts:
 
 ```text
 src/electricity/merge_florida_osm_gppd_powerplants.py
+src/electricity/match_florida_powerplants_to_osm_polygons.py
+src/electricity/review_large_generator_bus_assignments.py
 src/electricity/finalize_generator_bus_assignment_review.py
 src/electricity/convert_florida_assets_to_pypsa.py
 ```
@@ -88,4 +92,14 @@ Relevant script:
 
 ```text
 src/electricity/run_florida_pypsa_baseline_validation.py
+```
+
+## 8. N-1 Contingency Screen
+
+After the grid exists, the N-1 workflow can remove one bulk transmission line at a time and rerun a practical PyPSA screen. It reports post-contingency load shedding, emergency import slack, and overloaded lines.
+
+Relevant script:
+
+```text
+src/electricity/run_florida_pypsa_n1_bulk_contingency.py
 ```

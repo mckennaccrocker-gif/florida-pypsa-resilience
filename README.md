@@ -1,6 +1,17 @@
 # Florida PyPSA Resilience
 
-A Florida PyPSA electric-grid resilience model for studying hurricane wind and flood impacts. The workflow builds the grid from transmission, substation, power plant, demand, and cost data, then tests hazard impacts and adaptation strategies.
+This repository documents the Florida PyPSA resilience workflow I used to build a transmission-scale electricity model and then test hurricane wind, flood, N-1, validation, and adaptation questions on top of it.
+
+The basic idea is:
+
+1. build a Florida grid from transmission lines, buses/substations, power plants, load, costs, and generator profiles;
+2. make the grid more realistic by extending selected tie-lines into Georgia and Alabama;
+3. run baseline PyPSA dispatch with emergency import slack and load-shedding generators;
+4. damage or derate the grid using tropical cyclone or flood hazard data;
+5. compare the modeled consequences to observed Hurricane Ian outage data where possible;
+6. use the flood runs to test hardening options and cost-benefit results.
+
+This is research code, so it is not a one-click package. But the goal of this repo is to make the whole workflow understandable and to show where each major piece lives.
 
 ## What This Repository Contains
 
@@ -8,22 +19,21 @@ This repository is a cleaned, documented version of the Florida resilience workf
 
 The workflow covers:
 
-- Florida transmission line preprocessing
-- endpoint snapping and topology repair
-- substation-derived buses
-- voltage-layer buses and transformer/transfer components
-- transmission line capacities from static line ratings
-- power plant matching between OSM and GPPD
-- generator-to-bus assignment
-- generator marginal-cost construction
-- hourly Florida electricity demand
-- solar availability profiles
-- emergency import slack
-- load-shedding generators
-- no-hazard baseline dispatch
-- Georgia and Alabama tie-line extensions
-- tropical-cyclone wind exposure with OpenGIRA/SNAIL-style workflows
-- flood exposure, flood-damage scenarios, and adaptation analysis
+- HIFLD transmission-line preprocessing, endpoint/bus creation, and topology repair
+- OSM substation polygons and OSM/GPPD power plant matching
+- generator-to-bus assignment and review for large plants
+- extension of selected Florida lines into Georgia and Alabama boundary connections
+- line-capacity assignment using the static line rating equation
+- hourly demand assignment using county population weights
+- emergency import slack generators and load-shedding generators
+- generator marginal costs and solar availability profiles
+- fragility/vulnerability curves for TC wind and flood damage
+- SNAIL/OpenGIRA-style asset intersections for IBTrACS storms, synthetic storm return periods, and JRC flood depths
+- expected annual electricity-cost/load-shedding calculations and exceedance curves
+- N-1 bulk-line contingency screening
+- single-storm Hurricane Ian direct and indirect damage figures
+- EAGLE-I comparison figures for Hurricane Ian county outage patterns
+- flood hardening and cost-benefit analysis
 
 ## Repository Layout
 
@@ -33,7 +43,9 @@ src/
   exposure/      Tropical cyclone and flood exposure scripts
   cost/          Fragility, direct-damage, and EAD scripts
   adaptation/    Flood adaptation, cost-benefit, and final table scripts
+  validation/     EAGLE-I Hurricane Ian validation/comparison scripts
 docs/
+  full_workflow_story.md
   data_inputs.md
   data_availability.md
   pypsa_network_workflow.md
@@ -49,13 +61,27 @@ outputs/
 
 ## Quick Start
 
+Start with the main narrative:
+
+```text
+docs/full_workflow_story.md
+```
+
+Then use the run-order file:
+
+```text
+docs/script_index.md
+```
+
+At a high level:
+
 1. Create a local data folder matching `config/paths.example.yml`.
 2. Download or place the required source datasets described in `docs/data_inputs.md`.
 3. Build cleaned grid assets using the scripts in `src/electricity/`.
 4. Convert the cleaned assets into a PyPSA network.
 5. Run the no-hazard baseline.
-6. Run wind or flood hazard scenarios.
-7. Run adaptation or cost-benefit scripts if needed.
+6. Run wind, flood, N-1, or Hurricane Ian scenarios.
+7. Run validation/adaptation/cost-benefit scripts depending on the question.
 
 The scripts preserve the original project path structure used during development. For a new machine, update path constants or adapt them to read from `config/paths.example.yml`.
 
@@ -64,6 +90,8 @@ The scripts preserve the original project path structure used during development
 The PyPSA model represents transmission-scale operational behavior. It is not a full distribution-grid outage model, so local distribution outages observed in datasets such as EAGLE-I will not be fully represented. Load shedding in this model reflects transmission/generation/import constraints under modeled assumptions.
 
 Economic results use illustrative Value of Lost Load assumptions. These are societal avoided outage values, not direct utility revenue or verified Florida-specific cash savings.
+
+Raw restricted or very large data files are not included here. For security and reproducibility, the repo gives source links and workflow notes instead of committing local data extracts.
 
 ## Final Flood Adaptation Result
 

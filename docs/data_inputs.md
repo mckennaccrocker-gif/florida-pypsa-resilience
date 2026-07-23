@@ -1,10 +1,27 @@
 # Data Inputs
 
-This project uses several public and locally processed datasets. Large source files are not committed to the repository.
+This project uses several public and locally processed datasets. Large source files are not committed to the repository. For security/reproducibility, this repo gives links to the original sources instead of uploading local data extracts.
+
+## Data Source Links
+
+Core source links:
+
+- HIFLD electric transmission lines: https://catalog.data.gov/dataset/electric-power-transmission-lines
+- HIFLD ArcGIS item: https://www.arcgis.com/home/item.html?id=7759b0df07274f30a422e86dc11d4761
+- OpenStreetMap / Geofabrik U.S. state extracts: https://download.geofabrik.de/north-america/us.html
+- WRI Global Power Plant Database: https://datasets.wri.org/datasets/global-power-plant-database
+- EIA Open Data API: https://www.eia.gov/opendata/
+- NOAA IBTrACS: https://www.ncei.noaa.gov/products/international-best-track-archive
+- STORM fixed-return-period tropical cyclone wind data: https://zenodo.org/records/7438145
+- JRC river flood hazard map collection: https://data.jrc.ec.europa.eu/collection/id-0054
+- JRC flood maps in Google Earth Engine: https://developers.google.com/earth-engine/datasets/catalog/JRC_CEMS_GLOFAS_FloodHazard_v2_1
+- EAGLE-I portal: https://eagle-i.doe.gov/
+- EAGLE-I historical outage dataset reference: https://openenergyhub.ornl.gov/explore/dataset/eaglei_outages_2014/
+- snkit documentation: https://snkit.readthedocs.io/
 
 ## Transmission Lines
 
-The Florida transmission network was built from transmission-line geometries and attributes, including line owner, voltage class, status, endpoint substation names, and geometry. The workflow preserves original line geometry where possible.
+The Florida transmission network was built from HIFLD-style transmission-line geometries and attributes, including line owner, voltage class, status, endpoint substation names, and geometry. The workflow preserves original line geometry where possible.
 
 Key processing steps:
 
@@ -16,6 +33,8 @@ Key processing steps:
 - infer connected voltage levels from line attributes
 - review small islands manually in QGIS
 - extend selected northern lines into Georgia and Alabama to real external endpoints
+
+The Georgia/Alabama extension is important because the Florida grid is not electrically isolated at the state boundary. The extension is not a full Southeast model; it is a boundary representation that lets selected external ties behave more realistically in dispatch.
 
 ## Substations
 
@@ -47,6 +66,18 @@ Relevant scripts:
 ```text
 src/electricity/populate_florida_generator_marginal_costs.py
 src/electricity/finalize_florida_generator_marginal_costs.py
+```
+
+## Emergency Slack and Load Shedding
+
+Emergency import slack generators represent costly external support that can enter at selected boundary buses. Load-shedding generators are very expensive artificial generators at demand buses; they let PyPSA solve even when not all demand can be served. The reported load shedding is therefore modeled unserved demand, not observed customer outages.
+
+Relevant scripts:
+
+```text
+src/electricity/select_florida_boundary_import_buses.py
+src/electricity/run_florida_pypsa_load_shedding_dispatch.py
+src/electricity/run_boundary_import_baseline.py
 ```
 
 ## Hourly Electricity Demand
@@ -84,6 +115,27 @@ Relevant script:
 src/electricity/add_slr_s_nom_to_florida_lines.py
 ```
 
+## Fragility and Vulnerability Curves
+
+The final hazard scenarios use local curve CSVs derived from the selected fragility/vulnerability sources. They are applied through linear interpolation between saved curve points.
+
+Main curve set:
+
+- Flood lines: F6.2.
+- Flood power plants: F1.1, F1.2, F1.3, F1.4.
+- Flood substations/buses: F2.1, F2.2, F2.3.
+- TC wind lines: W6.3.
+- TC wind generators: W1.10, W1.11, W1.12, W1.13, W1.6.
+- TC wind substations/buses: W2.3.
+
+Relevant scripts:
+
+```text
+src/electricity/run_florida_pypsa_calibrated_hazard_scenarios.py
+src/electricity/run_florida_pypsa_gradual_return_period_suite.py
+src/electricity/validate_gradual_damage_scenarios.py
+```
+
 ## Hazard Data
 
 Tropical cyclone wind exposure uses OpenGIRA/SNAIL-style intersection outputs. Flood exposure uses return-period flood depths intersected with lines, generators, and buses.
@@ -94,3 +146,5 @@ Relevant folders:
 src/exposure/
 src/cost/
 ```
+
+The tropical cyclone workflow supports both historical IBTrACS events and synthetic/return-period storm wind data. The flood workflow uses JRC return-period flood depths. See `docs/full_workflow_story.md` for the full connection between source data, asset intersections, PyPSA scenarios, exceedance curves, EAGLE-I validation, and flood cost-benefit analysis.

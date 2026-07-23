@@ -50,6 +50,16 @@ src/electricity/validate_s_nom_multiplier.py
 
 The project also compared modeled Hurricane Ian load shedding with county-level observed outage patterns from EAGLE-I. Those outputs are useful for interpretation: the transmission-scale PyPSA model captures broad operational constraints, while observed outages include many distribution-level failures.
 
+Relevant scripts:
+
+```text
+src/validation/eaglei/run_eaglei_florida_validation.py
+src/validation/eaglei/run_eaglei_pypsa_comparison.py
+src/validation/eaglei/create_final_validation_graphs.py
+```
+
+The comparison is mainly spatial/ranking validation. EAGLE-I reports county customer outages, while PyPSA reports modeled unserved demand.
+
 ## Plotting Scripts
 
 Several plotting scripts are included because they produced thesis figures and exploratory diagnostics:
